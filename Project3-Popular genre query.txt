@@ -1,0 +1,14 @@
+
+SELECT Genre.name , Count(Genre.Name) AS Popular_Genre
+FROM Customer
+join Invoice
+ON Customer.customerId = Invoice.CustomerId
+JOIN InvoiceLine
+On Invoice.InvoiceId = InvoiceLine.InvoiceId
+Join Track
+ON InvoiceLine.TrackId=Track.TrackId
+Join Genre
+On track.GenreId= Genre.GenreId
+Group by Genre.name
+ORDER BY Popular_Genre DESC
+LIMIT 10

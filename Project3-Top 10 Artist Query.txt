@@ -1,0 +1,11 @@
+SELECT Artist.Name AS Popular_Artist , count(Genre.name) AS Songs
+FROM Artist 
+JOIN Album
+ON Album.ArtistId = Artist.ArtistId
+JOIN Track
+ON Album.AlbumId = Track.AlbumId
+JOIN Genre
+ON Track.GenreId = Genre.GenreId
+GROUP BY Artist.Name
+ORDER BY 2 DESC
+LIMIT 10

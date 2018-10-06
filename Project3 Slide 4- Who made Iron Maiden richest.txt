@@ -1,0 +1,16 @@
+SELECT  sum(InvoiceLine.UnitPrice*InvoiceLine.Quantity)AS SongCost, Customer.firstname,Customer.Lastname
+FROM Invoice 
+JOIN InvoiceLine
+ON Invoice.invoiceId = InvoiceLine.InvoiceId
+Join Customer
+On Invoice.CustomerId = Customer.CustomerId
+JOIN Track
+ON Track.trackId = InvoiceLine.TrackId
+JOIN Album
+ON Album.AlbumId= Track.AlbumId
+JOIN Artist
+ON Artist.ArtistId= Album.ArtistId
+where Artist.Name = 'Iron Maiden'
+GROUP BY Customer.CustomerId 
+order by Songcost desc
+LIMIT 10
